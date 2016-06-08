@@ -6,7 +6,19 @@ set -e
 cd $(dirname $0)
 
 # Clean out all .o files before we begin.
-find . -name '*.o' -delete
+find . -type f          \
+     -name "*.a"   -o   \
+     -name "*.bin" -o   \
+     -name "*.d"   -o   \
+     -name "*.dis" -o   \
+     -name "*.elf" -o   \
+     -name "*.hex" -o   \
+     -name "*.lst" -o   \
+     -name "*.map" -o   \
+     -name "*.o"   -o   \
+     -name "*.sym" -o   \
+     -name "*.zip"      \
+    | xargs rm -f
 
 source version.mk
 
